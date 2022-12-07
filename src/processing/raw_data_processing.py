@@ -94,14 +94,12 @@ def import_data():
 def create_id(df):
     df_2018 = df[df['year'] == '2018'].copy()
     df_2019 = df[df['year'] == '2019'].copy()
-    
-    # Map client ID names in 2018 to a number
-    d=dict((i,j) for j,i in enumerate(df_2018['Client ID'].unique()))
+
+    d=dict((i,int(j)+1) for j,i in enumerate(df_2018['Client ID'].unique()))
     df_2018.replace({'Client ID': d}, inplace=True)
-    
     df = pd.concat([df_2018, df_2019])
-    df['Client ID'] = df['Client ID'].astype(str) + df['year'].astype(str)
-    return df.reset_index(drop=True)
+    df['Client ID'] = df['Client ID'].astype(str) + df['Zip Code'].astype(str).str.split('.').str[0] + df['year'].astype(str)
+    return df
 
 
 def remove_columns(df):

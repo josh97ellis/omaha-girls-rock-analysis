@@ -37,7 +37,7 @@ def import_data():
     posttest_younger_2018 = (
         pd.read_excel(
             'data/raw/2018Girls Rock Data Analysis.xlsx',
-            sheet_name='PREtest-Younger Group',
+            sheet_name='POSTtest-Younger Group',
             skiprows=1))
     posttest_younger_2018['age_group'] = 'younger group'
     posttest_younger_2018['year'] = '2018'

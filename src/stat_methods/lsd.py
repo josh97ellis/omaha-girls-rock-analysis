@@ -152,6 +152,18 @@ class FishersLSD:
         fig.update_traces(
             meanline_visible=True)
         fig.update_layout(
-            title_text=f"Change between pre and post test scored, question {self.groupby_value}<br><i>by pairwise comparison of race/ethnicity",
-            violinmode='overlay')
+            title_text=f"Answer Ratings for personality_trait = {self.groupby_value}<br><i>pairwise comparison of race/ethnicity",
+            violinmode='overlay',
+            template='plotly_white',
+            autosize=False,
+            width=650,
+            height=350,
+            margin=dict(
+                l=50,
+                r=50,
+                b=100,
+                t=100,
+                pad=4
+            )
+        )
         return fig.show()
